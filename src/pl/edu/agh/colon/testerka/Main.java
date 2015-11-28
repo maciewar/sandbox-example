@@ -21,7 +21,7 @@ public class Main {
         } finally {
             System.out.println("Testerka: Alright, script has finished so I'll move the file outside the sandbox");
             sandboxedFile.renameTo(scriptFile);
-            System.out.println("Testerka: My job is done here");
+            System.out.println("Testerka: My work here is done");
         }
     }
 }
