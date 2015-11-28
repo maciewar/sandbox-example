@@ -1,0 +1,22 @@
+grant codebase "file:lib/jython-standalone-2.7.0.jar" {
+  permission java.lang.RuntimePermission "createClassLoader";
+  permission java.lang.RuntimePermission "getProtectionDomain";
+  permission java.lang.RuntimePermission "accessDeclaredMembers";
+  permission java.io.FilePermission "scripts/sandbox/script.py", "read";
+  permission java.util.PropertyPermission "java.vm.name", "read";
+  permission java.util.PropertyPermission "java.vm.vendor", "read";
+  permission java.util.PropertyPermission "os.name", "read";
+  permission java.util.PropertyPermission "os.arch", "read";
+  permission java.util.PropertyPermission "user.dir", "read";
+  permission java.util.PropertyPermission "line.separator", "read";
+  permission java.util.PropertyPermission "python.launcher.tty", "read";
+  permission java.util.PropertyPermission "idea.launcher.bin.path", "read";
+};
+
+grant codebase "file:out/-" {
+  permission java.security.AllPermission;
+};
+
+grant codebase "file:{path.to.intellij.installation}/-" {
+  permission java.security.AllPermission;
+};
