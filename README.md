@@ -82,3 +82,9 @@ Testerka: Alright, script has finished so I'll move the file outside the sandbox
 Testerka: My work here is done
 ```
 
+## Running the code
+
+If you want to reporoduce results:
+- put jython-standalone-2.7.0.jar into lib directory
+- create scripts/sandbox directory
+- set {path.to.intellij.installation} in security.policy appropriately or remove that file policy if you are not using IntelliJ
