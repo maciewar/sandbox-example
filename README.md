@@ -24,11 +24,13 @@ _Rise of the Machines_. Python script tries to access /etc/passwd file
 f = open('/etc/passwd')
 userdetails = f.read()
 ```
-
 ### Step 5
 java.security.AccessControlException is thrown. Testerka catches exception and punishes PythonInterpreter.
 
 ### Step 6
+Testerka captures standard output of the Python script and prints everything on the System.out
+
+### Step 7
 Testerka moves script back to its original path.
 
 ## Result of the experiment
@@ -36,6 +38,7 @@ Testerka moves script back to its original path.
 ```
 Testerka: Greetings from Java
 Testerka: I'll move the script file to the sandbox
+Captured output:
 Script: Greetings from sandbox
 Script: I am alive and I can do math!
 	2^10 = 1024
@@ -44,7 +47,7 @@ Script: Now I'll try something illegal
 Testerka: Wait a minute, you are not allowed to do that
 Testerka: Your process is sentenced to death for
 Traceback (most recent call last):
-  File "scripts/sandbox/script.py", line 6, in <module>
+  File "scripts/sandbox/script.py", line 7, in <module>
     f = open('/etc/passwd')
 java.security.AccessControlException: access denied ("java.io.FilePermission" "/etc/passwd" "read")
 	at java.security.AccessControlContext.checkPermission(AccessControlContext.java:472)
@@ -63,14 +66,14 @@ java.security.AccessControlException: access denied ("java.io.FilePermission" "/
 	at org.python.core.OpenFunction.__call__(__builtin__.java:1725)
 	at org.python.core.PyObject.__call__(PyObject.java:461)
 	at org.python.core.PyObject.__call__(PyObject.java:465)
-	at org.python.pycode._pyx0.f$0(scripts/sandbox/script.py:8)
+	at org.python.pycode._pyx0.f$0(scripts/sandbox/script.py:9)
 	at org.python.pycode._pyx0.call_function(scripts/sandbox/script.py)
 	at org.python.core.PyTableCode.call(PyTableCode.java:167)
 	at org.python.core.PyCode.call(PyCode.java:18)
 	at org.python.core.Py.runCode(Py.java:1386)
 	at org.python.core.__builtin__.execfile_flags(__builtin__.java:535)
 	at org.python.util.PythonInterpreter.execfile(PythonInterpreter.java:286)
-	at pl.edu.agh.colon.testerka.Main.main(Main.java:16)
+	at pl.edu.agh.colon.testerka.Main.main(Main.java:20)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

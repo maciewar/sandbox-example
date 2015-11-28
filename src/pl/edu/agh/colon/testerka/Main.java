@@ -3,18 +3,24 @@ package pl.edu.agh.colon.testerka;
 import org.python.util.PythonInterpreter;
 
 import java.io.File;
+import java.io.StringWriter;
+import java.io.Writer;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Testerka: Greetings from Java");
         File scriptFile = new File("scripts/script.py");
         File sandboxedFile = new File("scripts/sandbox/script.py");
+        Writer scriptWriter = new StringWriter();
         try {
             System.out.println("Testerka: I'll move the script file to the sandbox");
             scriptFile.renameTo(sandboxedFile);
             final PythonInterpreter interpreter = new PythonInterpreter();
+            interpreter.setOut(scriptWriter);
             interpreter.execfile("scripts/sandbox/script.py");
         } catch (Exception e) {
+            System.out.println("Captured output:");
+            System.out.print(scriptWriter.toString());
             System.out.println("Testerka: Wait a minute, you are not allowed to do that");
             System.out.println("Testerka: Your process is sentenced to death for");
             e.printStackTrace();
