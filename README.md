@@ -88,3 +88,4 @@ If you want to reporoduce results:
 - put jython-standalone-2.7.0.jar into lib directory
 - create scripts/sandbox directory
 - set {path.to.intellij.installation} in security.policy appropriately or remove that file policy if you are not using IntelliJ
+- run pl.edu.agh.colon.testerka.Main with JVM options: -Djava.security.manager -Djava.security.policy==security.policy
