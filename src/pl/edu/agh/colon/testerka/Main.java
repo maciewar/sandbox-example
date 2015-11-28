@@ -13,7 +13,6 @@ public class Main {
             System.out.println("Testerka: I'll move the script file to the sandbox");
             scriptFile.renameTo(sandboxedFile);
             final PythonInterpreter interpreter = new PythonInterpreter();
-            interpreter.set("python.path", "scripts/sandbox");
             interpreter.execfile("scripts/sandbox/script.py");
         } catch (Exception e) {
             System.out.println("Testerka: Wait a minute, you are not allowed to do that");
